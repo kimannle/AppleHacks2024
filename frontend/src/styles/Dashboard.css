@@ -37,7 +37,7 @@
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    background-color: #080f11; /* Dark blue background */
+    background-color: #080f11;
     box-shadow: 0 0 30px 10px rgba(255, 223, 0, 0.8); /* Gold glow effect */
     display: flex;
     flex-direction: column;
@@ -64,7 +64,6 @@
     box-shadow: 0 0 20px #ffd700;
   }
   
-  /* Make sure the page content doesn't overflow */
   html, body {
     overflow: hidden;
   }

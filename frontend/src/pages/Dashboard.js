@@ -1,9 +1,9 @@
 import React from 'react';
-import '../styles/Dashboard.css'; // Import the CSS for the dashboard
+import '../styles/Dashboard.css';
 
 function Dashboard() {
-  const username = 'John Doe'; // You can replace this with dynamic data later
-  const email = 'john.doe@example.com'; // Replace with dynamic data
+  const username = 'John Doe';
+  const email = 'john.doe@example.com';
 
   return (
     <div className="dashboard-container">
