@@ -1,0 +1,56 @@
+/* Container for the home page content */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  color: #f5f5f5;
+}
+
+/* Scoped heading for Home page */
+.home-container h1 {
+  font-family: 'Playfair Display', serif;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+/* Introduction text with a soft glow */
+.home-container .intro-text {
+  font-family: 'Lora', serif;
+  color: #f5f5f5;
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Container for the navigation links */
+.home-container .link-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Styled links for Home page */
+.home-container .styled-link {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #f5b041;
+  border-radius: 30px;
+  background-color: transparent;
+  color: #f5f5f5;
+  text-decoration: none;
+  font-family: 'Playfair Display', sans-serif;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.home-container .styled-link:hover {
+  background-color: #f5b041;
+  color: #1f4068;
+  box-shadow: 0 0 20px #ffd700;
+  text-shadow: 0 0 10px #ffffff;
+}
