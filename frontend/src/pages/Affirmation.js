@@ -1,0 +1,1 @@
+// Give the user a random affirmation
