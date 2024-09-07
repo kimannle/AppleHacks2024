@@ -35,7 +35,7 @@ def register():
 @app.route("/login", methods=['GET'])
 def login():
     username = request.args.get('username')
-    pwd = request.args.get('password').encode('utf-8')
+    pwd = request.args.get('password')
 
     try:
         user = AUTH.login(username = username, password = pwd)

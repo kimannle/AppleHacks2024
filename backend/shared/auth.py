@@ -17,7 +17,7 @@ class AUTH:
                 "password" : bcrypt.hashpw(kwargs.get('password'), bcrypt.gensalt()),
                 "email" : kwargs.get('email')
             }
-        existing_usr = self.db.findusr(data.get("email"))
+        existing_usr = self.db.findusr(data.get("username"))
         if existing_usr:
             return None
         
@@ -27,6 +27,6 @@ class AUTH:
     def login(self, **kwargs):
         user = self.db.findusr(kwargs.get('username'))
         if user and user.username == kwargs.get('username'):
-            if user and bcrypt.checkpw(kwargs.get('password').encode('utf-8'), user.password):
+            if bcrypt.checkpw(kwargs.get('password').encode('utf-8'), user.password):
                 return user
         return None
