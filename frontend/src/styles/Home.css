@@ -1,4 +1,13 @@
 /* Container for the home page content */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .home-container {
   display: flex;
   flex-direction: column;
@@ -7,11 +16,14 @@
   min-height: 100vh;
   text-align: center;
   color: #f5f5f5;
+  opacity: 0;
+  animation: fadeIn 5s ease-in-out forwards;
+  overflow: hidden;
 }
 
 /* Scoped heading for Home page */
 .home-container h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Lato', serif;
   color: #ffffff;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
   font-size: 3rem;
