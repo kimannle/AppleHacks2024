@@ -32,6 +32,20 @@ def register():
     except ValueError as e:
         return "{}".format(e)
 
+@app.route("/login", methods=['GET'])
+def login():
+    username = request.args.get('username')
+    pwd = request.args.get('password').encode('utf-8')
+
+    try:
+        user = AUTH.login(username = username, password = pwd)
+        if user is None:
+            return "Error logging in user"
+        return jsonify({"ID": user.id, "email": user.email, "username": user.username})
+
+    except ValueError as e:
+        return "{}".format(e)
+
 
 """@app.route("/members", methods=['GET'])
 def members():

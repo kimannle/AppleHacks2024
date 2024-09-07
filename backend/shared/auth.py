@@ -24,8 +24,9 @@ class AUTH:
         newusr = self.db.regusr(**data)
         return newusr
         
-       
-"""    def login(self, **kwargs):
-        try:
-           user =  self.db.findusr(kwargs.get('username'))
-           if user.password"""
+    def login(self, **kwargs):
+        user = self.db.findusr(kwargs.get('username'))
+        if user and user.username == kwargs.get('username'):
+            if user and bcrypt.checkpw(kwargs.get('password').encode('utf-8'), user.password):
+                return user
+        return None

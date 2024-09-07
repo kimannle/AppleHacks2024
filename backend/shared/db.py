@@ -34,5 +34,5 @@ class DB:
             return None
 
     def findusr(self, query) -> User | None:
-        result = self._session.query(User).filter_by(email=query).first()
+        result = self._session.query(User).filter_by(username=query).first()
         return result
