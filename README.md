@@ -59,6 +59,16 @@ When you're done working on the project, you can deactivate the virtual environm
 
 ```deactivate```
 
+## Starting the Front End
+
+Change your directory into the front end:
+
+```cd frontend```
+
+Start the react app:
+
+```npm start```
+
 ## Troubleshooting
 
 If you encounter any issues during setup, ensure that you are using the correct version of Python and that your virtual environment is activated.
