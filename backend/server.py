@@ -9,6 +9,9 @@ CORS(app)
 
 AUTH = AUTH()
 
+def init_activities(activity = []):
+    ## add activities
+    pass
 
 @app.route("/", methods=['GET'])
 def root():
