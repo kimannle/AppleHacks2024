@@ -3,6 +3,7 @@ from . import BASE
 from sqlalchemy.orm import sessionmaker, Session
 from models.user import User
 from models.activity import Activity
+from models.affirmation import Affirmation
 from sqlalchemy.exc import NoResultFound
 
 class DB:
