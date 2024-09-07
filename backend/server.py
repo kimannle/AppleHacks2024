@@ -20,7 +20,9 @@ def register():
     pwd = request.args.get('password').encode('utf-8')
     email = request.args.get('email')
     user = AUTH.register_user(username=username, password=pwd, email=email)
-    return user
+    if user is None:
+        return {}
+    return jsonify({"email": user.email, "username": user.username})
 
 
 """@app.route("/members", methods=['GET'])

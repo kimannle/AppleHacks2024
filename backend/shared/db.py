@@ -31,7 +31,7 @@ class DB:
             return user
         except Exception as e:
             self._session.rollback()
-            return None
+            raise Exception
 
     def findusr(self, query) -> User:
         result = self.__session.query(User).filter_by(username=query).first()
