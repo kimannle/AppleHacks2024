@@ -8,6 +8,20 @@ class AUTH:
     def __init__(self) -> None:
         self.db = DB()
 
+    def add_activity_to_db(activity_description: str, status: bool=False) -> Activity | None:
+        return db.add_activity(activity=activity_description, status=status)
+
+    def init_activities(activities: list[str]) -> None:
+        for activity in activities:
+            add_activity_to_db(activity)
+
+    def add_affirmation_to_db(affirmation_description: str, status: bool=False) -> Affirmation | None:
+        return db.add_affirmation(affirmation=affirmation_description, status=status)
+
+    def init_affirmations(affirmations: list[str]) -> None:
+        for affirmation in affirmations:
+            add_affirmation_to_db(affirmation)
+
     def register_user(self, **kwargs):
         for key in kwargs.keys():
             if hasattr(User, key) is False:
