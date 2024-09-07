@@ -39,7 +39,11 @@ To activate the virtual environment, use the following command:
 
 ### 4. Install Required Packages
 
-With the virtual environment activated, install the project's dependencies from the requirements.txt file:
+With the virtual environment activated, change your directory to the backend and install the project's dependencies from the requirements.txt file:
+
+```cd backend```
+
+Then:
 
 ```pip install -r requirements.txt```
 
