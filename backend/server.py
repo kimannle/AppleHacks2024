@@ -16,13 +16,21 @@ def root():
 
 @app.route("/register", methods=['GET'])
 def register():
+    """
+    EXAMPLE USAGE: 
+    http://localhost:5000/register?username=kim&password=123456&email=lolly
+    
+    """
     username = request.args.get('username')
     pwd = request.args.get('password').encode('utf-8')
     email = request.args.get('email')
-    user = AUTH.register_user(username=username, password=pwd, email=email)
-    if user is None:
-        return {}
-    return jsonify({"email": user.email, "username": user.username})
+    try:
+        user = AUTH.register_user(username=username, password=pwd, email=email)
+        if user is None:
+            return "error registering user, user may already exist"
+        return jsonify({"ID": user.id, "email": user.email, "username": user.username})
+    except ValueError as e:
+        return "{}".format(e)
 
 
 """@app.route("/members", methods=['GET'])

@@ -21,7 +21,7 @@ class DB:
             self.__session = on_session()
         return self.__session
     
-    def regusr(self, **kwargs):
+    def regusr(self, **kwargs) -> User | None:
         user = User()
         for key, val in kwargs.items():
             user.__setattr__(key, val)
@@ -31,10 +31,8 @@ class DB:
             return user
         except Exception as e:
             self._session.rollback()
-            raise Exception
+            return None
 
-    def findusr(self, query) -> User:
-        result = self.__session.query(User).filter_by(username=query).first()
-        if result is None:
-            raise NoResultFound()
+    def findusr(self, query) -> User | None:
+        result = self._session.query(User).filter_by(email=query).first()
         return result
