@@ -11,19 +11,20 @@ class AUTH:
     def register_user(self, **kwargs):
         for key in kwargs.keys():
             if hasattr(User, key) is False:
-                raise Exception("use valid user registration properties")
-        try:
-            data = {
+                raise ValueError("use valid user registration properties")
+        data = {
                 "username":  kwargs.get('username'),
                 "password" : bcrypt.hashpw(kwargs.get('password'), bcrypt.gensalt()),
                 "email" : kwargs.get('email')
             }
-            user = self.db.regusr(**data)
-            return user
-        except Exception as e:
-            print("{}".format(e))
+        existing_usr = self.db.findusr(data.get("email"))
+        if existing_usr:
             return None
-    
+        
+        newusr = self.db.regusr(**data)
+        return newusr
+        
+       
 """    def login(self, **kwargs):
         try:
            user =  self.db.findusr(kwargs.get('username'))
