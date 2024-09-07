@@ -72,3 +72,17 @@ class DB:
             self._session.rollback()
             print(f"Error adding affirmation: {e}")
             return None
+
+    def get_all_activities(self) -> list[Activity]:
+        try:
+            return self._session.query(Activity).all()
+        except Exception as e:
+            print(f"Error fetching activities: {e}")
+            return []
+
+    def get_all_affirmations(self) -> list[Affirmation]:
+        try:
+            return self._session.query(Affirmation).all()
+        except Exception as e:
+            print(f"Error fetching affirmations: {e}")
+            return []

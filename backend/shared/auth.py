@@ -2,8 +2,7 @@ from .db import DB, User
 import bcrypt
 from models.activity import Activity
 from models.affirmation import Affirmation
-
-
+import random
 
 class AUTH:
     
@@ -46,3 +45,15 @@ class AUTH:
             if bcrypt.checkpw(kwargs.get('password').encode('utf-8'), user.password):
                 return user
         return None
+
+    def get_random_activity(self) -> Activity | None:
+        activities = self.db.get_all_activities()
+        if not activities:
+            return None
+        return random.choice(activities)
+
+    def get_random_affirmation(self) -> Affirmation | None:
+        affirmations = self.db.get_all_affirmations()
+        if not affirmations:
+            return None
+        return random.choice(affirmations)
