@@ -1,12 +1,27 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 import random
-from shared.db import DB
+from shared.auth import AUTH
+import bcrypt
 
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/members", methods=['GET'])
+AUTH = AUTH()
+
+
+@app.route("/", methods=['GET'])
+def root():
+    return "WELCOME TO FLASK"
+
+@app.route("/register", methods=['GET'])
+def register():
+    username = request.args.get('username')
+    pwd = request.args.get('password').encode('utf-8')
+    email = request.args.get('email')
+    AUTH.register_user(username=username, password=pwd, email=email)
+    return "okay"
+"""@app.route("/members", methods=['GET'])
 def members():
     return jsonify({"members": ["Member1", "Member2", "Member3"]})
 
@@ -224,6 +239,9 @@ def daily_affirmation():
         ]
     selected_affirmation = random.choice(affirmations)
     return jsonify({"dailyAffirmation": selected_affirmation})
+
+
+"""
 
 if __name__ == "__main__":
     app.run(debug=True)
