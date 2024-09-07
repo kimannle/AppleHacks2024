@@ -18,10 +18,11 @@ class AUTH:
                 "password" : bcrypt.hashpw(kwargs.get('password'), bcrypt.gensalt()),
                 "email" : kwargs.get('email')
             }
-            self.db.regusr(**data)
-            print("user added to db")
+            user = self.db.regusr(**data)
+            return user
         except Exception as e:
             print("{}".format(e))
+            return None
     
 """    def login(self, **kwargs):
         try:

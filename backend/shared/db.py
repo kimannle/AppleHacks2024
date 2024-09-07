@@ -28,8 +28,10 @@ class DB:
         try:
             self._session.add(user)
             self._session.commit()
+            return user
         except Exception as e:
             self._session.rollback()
+            return None
 
     def findusr(self, query) -> User:
         result = self.__session.query(User).filter_by(username=query).first()
