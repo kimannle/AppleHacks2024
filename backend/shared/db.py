@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 from . import BASE
 from sqlalchemy.orm import sessionmaker, Session
 from models.user import User
+from models.activity import Activity
 from sqlalchemy.exc import NoResultFound
 
 
@@ -36,3 +37,21 @@ class DB:
     def findusr(self, query) -> User | None:
         result = self._session.query(User).filter_by(username=query).first()
         return result
+    
+    
+    def add_activity(self, **kwargs) -> Activity | None:
+        act = Activity()
+        for key in kwargs.keys():
+            if hasattr(Activity, key) is False:
+                raise ValueError("INVALID MAPPINGS")
+
+        for key, value in kwargs.items():
+            act.__setattr__(key, value)
+        
+        try:
+            self._session.add(act)
+            self._session.commit()
+            return act
+        except:
+            self._session.rollback()
+            return None
