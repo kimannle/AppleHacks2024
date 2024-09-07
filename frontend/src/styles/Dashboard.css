@@ -1,0 +1,71 @@
+/* Full-page container for the dashboard */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    text-align: center;
+  }
+  
+  /* Username and email info in the top-left corner */
+  .user-info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-align: left;
+    color: #f5f5f5;
+  }
+  
+  .user-info p {
+    margin: 0;
+    font-size: 1.2rem;
+    font-family: 'Lora', serif;
+  }
+  
+  /* Centered circle */
+  .circle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .circle {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #080f11; /* Dark blue background */
+    box-shadow: 0 0 30px 10px rgba(255, 223, 0, 0.8); /* Gold glow effect */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Buttons inside the circle */
+  .dashboard-button {
+    background-color: #f5b041;
+    color: #ffff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 20px;
+    margin: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .dashboard-button:hover {
+    background-color: #ffd700; /* Brighter gold */
+    box-shadow: 0 0 20px #ffd700;
+  }
+  
+  /* Make sure the page content doesn't overflow */
+  html, body {
+    overflow: hidden;
+  }
+  

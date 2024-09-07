@@ -1,16 +1,27 @@
-// This will be where you choose an activity or affirmation, and you can see your total progress
-
 import React from 'react';
-import { Link } from 'react-router-dom';
-import StarryNight from '../ui-components/StarryNight';
+import '../styles/Dashboard.css'; // Import the CSS for the dashboard
 
 function Dashboard() {
-    return (
-        <div>
-            <StarryNight />
-            <h1>Dashboard to be implemented</h1>
+  const username = 'John Doe'; // You can replace this with dynamic data later
+  const email = 'john.doe@example.com'; // Replace with dynamic data
+
+  return (
+    <div className="dashboard-container">
+      {/* Display username and email */}
+      <div className="user-info">
+        <p>{username}</p>
+        <p>{email}</p>
+      </div>
+
+      {/* Centered circle with buttons */}
+      <div className="circle-container">
+        <div className="circle">
+          <button className="dashboard-button">Activity</button>
+          <button className="dashboard-button">Progress</button>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
 
 export default Dashboard;

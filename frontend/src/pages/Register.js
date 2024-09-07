@@ -3,7 +3,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/RegLog.css';
-import StarryNight from '../ui-components/StarryNight';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -21,9 +20,12 @@ function Register() {
 
     return (
         <div className="reglog-container">
-            <StarryNight />
             <h1> Create Your Account </h1>
             <form onSubmit={handleSubmit}>
+
+                <label htmlFor="username"> Username </label>
+                <input type="username" id="username" name="username" required />
+
                 <label htmlFor="email"> Email Address </label>
                 <input type="email" id="email" name="email" required />
 
