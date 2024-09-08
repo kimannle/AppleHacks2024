@@ -12,7 +12,7 @@ function Activity() {
         ).then(
             data => {
                 console.log(data);
-                setActivity(data.activity);
+                setActivity(data);
             }
         ).catch(
             error => console.error('Error:', error)
