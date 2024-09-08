@@ -46,20 +46,17 @@
 
 /* Styled links for Home page */
 .home-container .styled-link {
-  display: inline-block;
-  padding: 10px 20px;
-  border: 2px solid #f5b041;
-  border-radius: 30px;
-  background-color: transparent;
+  background-color: #1f4068;
   color: #f5f5f5;
-  text-decoration: none;
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 20px;
 }
 
 .home-container .styled-link:hover {
   background-color: #f5b041;
-  color: #1f4068;
   box-shadow: 0 0 20px #ffd700;
-  text-shadow: 0 0 10px #ffffff;
+  color: #1f4068;
 }
