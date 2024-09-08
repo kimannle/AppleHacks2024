@@ -26,7 +26,7 @@ function Affirmation() {
     const navigate = useNavigate();
 
     const handleButtonClick = () => {
-        fetch(`/complete_affirmation?id=${affirmationId}&uid=${user.ID}`, {
+        fetch(`/complete_affirmation?id=${affirmationId}&uid=${user['User id']}`, {
             method: 'GET'
         }).then(
             res => res.json()

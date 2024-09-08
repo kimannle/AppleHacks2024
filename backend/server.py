@@ -243,7 +243,7 @@ def register():
         user = AUTH.register_user(username=username, password=pwd, email=email)
         if user is None:
             return "error registering user, user may already exist"
-        return jsonify({"User id": user.id, "Username": user.username, "Completed activity ids": user.completed_activity_ids})
+        return jsonify({"User id": user.id, "Username": user.username, "Completed activity ids": user.completed_activity_ids, "Completed affirmation ids": user.completed_affirmation_ids})
     except ValueError as e:
         return "{}".format(e)
 
@@ -256,7 +256,7 @@ def login():
         user = AUTH.login(username=username, password=pwd)
         if user is None:
             return jsonify({"error": "Error logging in user"}), 400
-        return jsonify({"User id": user.id, "Username": user.username, "Completed activity ids": user.completed_activity_ids})
+        return jsonify({"User id": user.id, "Username": user.username, "Completed activity ids": user.completed_activity_ids, "Completed affirmation ids": user.completed_affirmation_ids})
 
     except ValueError as e:
         return jsonify({"error": str(e)}), 400

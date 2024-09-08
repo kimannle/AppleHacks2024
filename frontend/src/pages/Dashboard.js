@@ -14,7 +14,7 @@ function Dashboard() {
     return (
         <div className="dashboard-container">
             <div>
-                <h1>Hello, {user ? user.username : 'Guest'}!</h1>
+                <h1>Hello, {user ? user['Username'] : 'Guest'}!</h1>
             </div>
 
             <div className={`circle-container ${showFirstSet ? 'fade-in' : 'fade-out'}`}>

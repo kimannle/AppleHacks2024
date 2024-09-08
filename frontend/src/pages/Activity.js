@@ -26,7 +26,8 @@ function Activity() {
     const navigate = useNavigate();
 
     const handleButtonClick = () => {
-        fetch(`/complete_activity?id=${activityId}&uid=${user.ID}`, {
+        console.log(user)
+        fetch(`/complete_activity?id=${activityId}&uid=${user['User id']}`, {
             method: 'GET'
         }).then(
             res => res.json()
