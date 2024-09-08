@@ -1,6 +1,9 @@
+/* Import Lato font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
 /* Body */
 body {
-  font-family: 'Lora', serif;
+  font-family: 'Lato', sans-serif;
   background: linear-gradient(180deg, #000000 0%, #080f11 50%, #0a1215 75%, #0e1b20 100%);
   color: #f5f5f5;
   min-height: 100vh;
@@ -17,8 +20,11 @@ body {
   padding: 20px;
 }
 
+h1, h2, p, label, a, button, input, li {
+  font-family: 'Lato', sans-serif;
+}
+
 h1, h2 {
-  font-family: 'Playfair Display', serif;
   color: #ffffff;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
@@ -44,7 +50,6 @@ button {
   border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  font-family: 'Montserrat', sans-serif;
   margin-top: 20px;
 }
 
@@ -55,7 +60,6 @@ button:hover {
 }
 
 label {
-  font-family: 'Playfair Display', serif;
   color: #ffffff;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
   font-size: 1.2rem;
@@ -71,7 +75,6 @@ input {
   border-radius: 10px;
   background-color: #203a43;
   color: #f5f5f5;
-  font-family: 'Montserrat', sans-serif;
 }
 
 input:focus {

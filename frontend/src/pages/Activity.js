@@ -21,7 +21,7 @@ function Activity() {
 
     return (
         <div className="ac-av">
-            <h2>The universe has spoken forth today’s fated task!</h2>
+            <h2>The universe has spoken forth today's fated task!</h2>
             <p>{activity}</p>
             <button>I did it!</button>
         </div>
