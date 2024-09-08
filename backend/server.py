@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, abort
 from flask_cors import CORS
 import random
 from shared.auth import AUTH
@@ -284,6 +284,18 @@ def random_affirmation():
     except Exception as e:
         print(f"Error fetching daily affirmation: {e}")
         return jsonify({"error": "Internal server error"}), 500
+
+@app.route("/complete_activity", methods=['GET', 'POST'])
+def complete_activity():
+    activity_id = request.args.get('id')
+    user_id = request.args.get('uid')
+    try:
+        complete = AUTH.complete_activity(activity_id, user_id)
+        if complete:
+            return jsonify({"completion_status" : complete})
+        return jsonify({"completion_status" : False})
+    except:
+        return abort(500)
 
 if __name__ == "__main__":
     app.run(debug=True)

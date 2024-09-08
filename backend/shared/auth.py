@@ -57,3 +57,12 @@ class AUTH:
         if not affirmations:
             return None
         return random.choice(affirmations)
+    
+    def complete_activity(self, id:int, uid:int) -> bool:
+        try:
+            activity = self.db.find_activity(id)
+            user =  self.db.findusr(id)
+            if isinstance(user, User) and isinstance(activity, Activity):
+                
+        except:
+            return False

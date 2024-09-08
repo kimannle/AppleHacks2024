@@ -33,7 +33,11 @@ class DB:
             return None
 
     def findusr(self, query) -> User | None:
-        result = self._session.query(User).filter_by(username=query).first()
+        result = None
+        try:
+            result = self._session.query(User).filter_by(username=query).first()
+        except:
+            result = self._session.query(User).filter_by(id=query).first()
         return result
     
     
@@ -86,3 +90,10 @@ class DB:
         except Exception as e:
             print(f"Error fetching affirmations: {e}")
             return []
+    
+    def find_activity(self, id) -> Activity:
+        try:
+            return self._session.query(Activity).filter_by(id=id).first()
+        except Exception as e:
+            print("invalid ID: {}".format(e))
+            return None
