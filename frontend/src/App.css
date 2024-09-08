@@ -1,6 +1,9 @@
+/* Import Lato font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
 /* Body */
 body {
-  font-family: 'Lora', serif;
+  font-family: 'Lato', sans-serif;
   background: linear-gradient(180deg, #000000 0%, #080f11 50%, #0a1215 75%, #0e1b20 100%);
   color: #f5f5f5;
   min-height: 100vh;
@@ -17,8 +20,11 @@ body {
   padding: 20px;
 }
 
+h1, h2, p, label, a, button, input, li {
+  font-family: 'Lato', sans-serif;
+}
+
 h1, h2 {
-  font-family: 'Playfair Display', serif;
   color: #ffffff;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
@@ -39,12 +45,11 @@ a:hover {
 button {
   background-color: #1f4068;
   color: #f5f5f5;
-  border: 2px solid #f5b041;
   padding: 10px 20px;
   border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  font-family: 'Montserrat', sans-serif;
+  margin-top: 20px;
 }
 
 button:hover {
@@ -53,14 +58,21 @@ button:hover {
   color: #1f4068;
 }
 
+label {
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  font-size: 1.2rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+}
+
 /* Form fields */
 input {
   padding: 10px;
-  border: 2px solid #f5b041;
   border-radius: 10px;
   background-color: #203a43;
   color: #f5f5f5;
-  font-family: 'Montserrat', sans-serif;
 }
 
 input:focus {
@@ -84,4 +96,31 @@ li {
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Page transition */
+.page-enter {
+  transform: translateY(100%); /* Page starts from the bottom */
+  opacity: 0;
+}
+.page-enter-active {
+  transform: translateY(0); /* Slide in to normal position */
+  opacity: 1;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.page-exit {
+  transform: translateY(0); /* Start from normal position */
+  opacity: 1;
+}
+.page-exit-active {
+  transform: translateY(-100%); /* Slide out towards the top */
+  opacity: 0;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
 }

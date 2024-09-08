@@ -3,9 +3,9 @@ from shared import BASE
 
 # THIS IS READ ONLY, FOR STORAGE OF THE STRINGS
 
-class Activity(BASE):
+class Affirmation(BASE):
 
-    __tablename__ = "Activity"
-    
+    __tablename__ = "Affirmation"
+
     id = Column(Integer, primary_key=True, nullable=False)
-    activity = Column(String(250), nullable=False)
+    affirmation = Column(String(250), nullable=False)

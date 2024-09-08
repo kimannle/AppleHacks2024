@@ -1,0 +1,105 @@
+/* Full-page container for the dashboard */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  text-align: center;
+}
+
+/* Username and email info in the top-left corner */
+.user-info {
+  position: relative;
+  top: 25vh;
+  text-align: left;
+  color: #f5f5f5;
+}
+
+.dashboard-container h1 {
+  position: relative;
+  top: 15vh;
+}
+
+.user-info p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.circle-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 20vh;
+  position: absolute; /* Ensure containers overlap */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;  /* Initially hidden */
+  visibility: hidden;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+.circle-container.fade-in {
+  opacity: 1;      /* Fade in the container */
+  visibility: visible;
+}
+
+.circle-container.fade-out {
+  opacity: 0;      /* Fade out the container */
+  visibility: hidden;
+}
+
+/* Circle styles */
+.circle {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #000000 0%, #080422 50%, #071590 75%, #61a5bf 100%);
+  box-shadow: 0 0 30px 10px rgba(40, 48, 162, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'Roboto Slab', sans-serif;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Enlarged box shadow when clicked */
+.circle:active {
+  box-shadow: 0 0 40px 15px rgba(40, 48, 162, 1); /* Stronger shadow for all circles */
+}
+
+.circle-special {
+  background: linear-gradient(180deg, #000000 0%, #18051b 50%, #51045d 75%, #af89b5 100%);
+  box-shadow: 0 0 30px 10px rgba(65, 11, 102, 0.8);
+}
+
+.circle-special:active {
+  box-shadow: 0 0 40px 15px rgba(103, 41, 145, 0.8); /* Stronger shadow on click */
+}
+
+.circle span {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.circle div {
+  color: #f5b041;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.circle div:hover {
+  color: #ffdf00;
+  text-shadow: 0 0 5px rgba(255, 223, 0, 0.8);
+}
+
+html, body {
+  overflow: hidden;
+}

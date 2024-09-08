@@ -3,10 +3,8 @@ from . import BASE
 from sqlalchemy.orm import sessionmaker, Session
 from models.user import User
 from models.activity import Activity
+from models.affirmation import Affirmation
 from sqlalchemy.exc import NoResultFound
-
-
-
 
 class DB:
     def __init__(self) -> None:
@@ -40,18 +38,51 @@ class DB:
     
     
     def add_activity(self, **kwargs) -> Activity | None:
-        act = Activity()
+        activity = Activity()
         for key in kwargs.keys():
-            if hasattr(Activity, key) is False:
+            if not hasattr(Activity, key):
                 raise ValueError("INVALID MAPPINGS")
 
         for key, value in kwargs.items():
-            act.__setattr__(key, value)
+            setattr(activity, key, value)
         
         try:
-            self._session.add(act)
+            self._session.add(activity)
             self._session.commit()
-            return act
+            return activity
         except:
             self._session.rollback()
+            print(f"Error adding activity: {e}")
             return None
+
+    def add_affirmation(self, **kwargs) -> Affirmation | None:
+        affirmation = Affirmation()
+        for key in kwargs.keys():
+            if not hasattr(Affirmation, key):
+                raise ValueError("INVALID MAPPINGS")
+        
+        for key, value in kwargs.items():
+            setattr(affirmation, key, value)
+
+        try:
+            self._session.add(affirmation)
+            self._session.commit()
+            return affirmation
+        except:
+            self._session.rollback()
+            print(f"Error adding affirmation: {e}")
+            return None
+
+    def get_all_activities(self) -> list[Activity]:
+        try:
+            return self._session.query(Activity).all()
+        except Exception as e:
+            print(f"Error fetching activities: {e}")
+            return []
+
+    def get_all_affirmations(self) -> list[Affirmation]:
+        try:
+            return self._session.query(Affirmation).all()
+        except Exception as e:
+            print(f"Error fetching affirmations: {e}")
+            return []
