@@ -2,14 +2,14 @@
 .dashboard-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   height: 100vh;
   position: relative;
   text-align: center;
 }
-  
-  /* Username and email info in the top-left corner */
+
+/* Username and email info in the top-left corner */
 .user-info {
   position: absolute;
   top: 20px;
@@ -17,37 +17,67 @@
   text-align: left;
   color: #f5f5f5;
 }
-  
+
 .user-info p {
   margin: 0;
   font-size: 1.2rem;
 }
-  
-  /* Centered circle */
+
 .circle-container {
   display: flex;
-  flex-direction: column;
-  padding: 20px;
-  height: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  gap: 50px;
+  position: absolute; /* Ensure containers overlap */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;  /* Initially hidden */
+  visibility: hidden;
+  transition: opacity 1s ease, visibility 1s ease;
 }
-  
+
+.circle-container.fade-in {
+  opacity: 1;      /* Fade in the container */
+  visibility: visible;
+}
+
+.circle-container.fade-out {
+  opacity: 0;      /* Fade out the container */
+  visibility: hidden;
+}
+
+/* Circle styles */
 .circle {
   width: 250px;
   height: 250px;
   border-radius: 50%;
   background: linear-gradient(180deg, #000000 0%, #080422 50%, #071590 75%, #61a5bf 100%);
-  box-shadow: 0 0 30px 10px rgba(40, 48, 162, 0.8); /* Gold glow effect */
+  box-shadow: 0 0 30px 10px rgba(40, 48, 162, 0.8);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  cursor: pointer; /* Makes the whole circle clickable */
+  cursor: pointer;
   font-family: 'Roboto Slab', sans-serif;
+  transition: box-shadow 0.3s ease;
 }
 
+/* Enlarged box shadow when clicked */
 .circle:active {
-  box-shadow: 0 0 40px 15px rgba(52, 40, 162, 0.8);
+  box-shadow: 0 0 40px 15px rgba(40, 48, 162, 1); /* Stronger shadow for all circles */
+}
+
+.circle-special {
+  background: linear-gradient(180deg, #000000 0%, #27082c 50%, #51115b 75%, #ca7ed6 100%);
+  box-shadow: 0 0 30px 10px rgba(65, 11, 102, 0.8);
+}
+
+.circle-special:active {
+  box-shadow: 0 0 40px 15px rgba(103, 41, 145, 0.8); /* Stronger shadow on click */
 }
 
 .circle span {
@@ -55,25 +85,6 @@
   font-size: 1.5rem;
 }
 
-  /* Buttons inside the circle */
-.dashboard-button {
-  background-color: #f5b041;
-  color: #ffff;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 20px;
-  margin: 10px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-  
-.dashboard-button:hover {
-  background-color: #ffd700; /* Brighter gold */
-  box-shadow: 0 0 20px #ffd700;
-}
-  
 html, body {
   overflow: hidden;
 }
-  
