@@ -17,20 +17,4 @@
     font-size: 1.5rem;
   }
   
-  .completed-container button {
-    margin-top: 10vh; /* Adjusts vertical spacing for the button */
-    padding: 10px 20px;
-    background-color: #f5b041;
-    color: #1f4068;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    top: 40vh;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .completed-container button:hover {
-    background-color: #ffd700;
-    box-shadow: 0 0 20px #ffd700;
-  }
   
