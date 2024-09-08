@@ -50,7 +50,7 @@ class DB:
             self._session.add(activity)
             self._session.commit()
             return activity
-        except:
+        except Exception as e:
             self._session.rollback()
             print(f"Error adding activity: {e}")
             return None
@@ -68,7 +68,7 @@ class DB:
             self._session.add(affirmation)
             self._session.commit()
             return affirmation
-        except:
+        except Exception as e:
             self._session.rollback()
             print(f"Error adding affirmation: {e}")
             return None

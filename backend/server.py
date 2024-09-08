@@ -266,7 +266,7 @@ def random_activity():
     try:
         daily_activity = AUTH.get_random_activity()
         if daily_activity:
-            return jsonify(daily_activity.activity), 200
+            return jsonify({"activitiy": daily_activity.activity, "id": daily_activity.id}), 200
         else:
             return jsonify({"error": "No activities found"}), 404
     except Exception as e:
@@ -278,7 +278,7 @@ def random_affirmation():
     try:
         daily_affirmation = AUTH.get_random_affirmation()
         if daily_affirmation:
-            return jsonify(daily_affirmation.affirmation), 200
+            return jsonify({"affirmation": daily_affirmation.affirmation, "id": daily_affirmation.id}), 200
         else:
             return jsonify({"error": "No affirmations found"}), 404
     except Exception as e:
