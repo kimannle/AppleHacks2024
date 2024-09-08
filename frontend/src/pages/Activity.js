@@ -17,7 +17,7 @@ function Activity() {
         ).catch(
             error => console.error('Error:', error)
         );
-    }, []);
+    }, [``]);
 
     return (
         <div className="ac-av">

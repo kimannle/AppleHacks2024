@@ -18,6 +18,12 @@
   color: #f5f5f5;
 }
 
+.dashboard-container h1 {
+  position: absolute;
+  top: 10vh;
+  left: 90vh;
+}
+
 .user-info p {
   margin: 0;
   font-size: 1.2rem;
@@ -29,7 +35,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 50px;
+  gap: 20vh;
   position: absolute; /* Ensure containers overlap */
   top: 0;
   left: 0;
@@ -72,7 +78,7 @@
 }
 
 .circle-special {
-  background: linear-gradient(180deg, #000000 0%, #27082c 50%, #51115b 75%, #ca7ed6 100%);
+  background: linear-gradient(180deg, #000000 0%, #1e0622 50%, #591064 75%, #ca7ed6 100%);
   box-shadow: 0 0 30px 10px rgba(65, 11, 102, 0.8);
 }
 
@@ -83,6 +89,17 @@
 .circle span {
   color: #fff;
   font-size: 1.5rem;
+}
+
+.circle div {
+  color: #f5b041;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.circle div:hover {
+  color: #ffdf00;
+  text-shadow: 0 0 5px rgba(255, 223, 0, 0.8);
 }
 
 html, body {

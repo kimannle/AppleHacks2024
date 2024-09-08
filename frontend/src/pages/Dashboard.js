@@ -13,16 +13,20 @@ function Dashboard() {
 
     return (
         <div className="dashboard-container">
-            <div className="user-info">
-                <p>Hello, {user ? user.username : 'Guest'}!</p>
+            <div>
+                <h1>Hello, {user ? user.username : 'Guest'}!</h1>
             </div>
 
             <div className={`circle-container ${showFirstSet ? 'fade-in' : 'fade-out'}`}>
                 <div className="circle">
-                    <span>See Progress</span>
+                    <div className="circle-div">
+                        <span>See Progress</span>
+                    </div>
                 </div>
                 <div className="circle circle-special" onClick={handleDailyTasksClick}>
-                    <span>Daily Tasks</span>
+                    <div className="circle-div">
+                        <span>Daily Tasks</span>
+                    </div>
                 </div>
             </div>
 
