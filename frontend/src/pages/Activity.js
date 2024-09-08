@@ -36,8 +36,8 @@ function Activity() {
                 if (data.completion_status !== false) {
                     setUser(prevUser => ({
                         ...prevUser,
-                        completedActivityIds: data['Completed activity ids'],
-                        completedAffirmationIds: prevUser.completedAffirmationIds || []
+                        'Completed activity ids': data['Completed activity ids'],
+                        'Completed affirmation ids': prevUser['Completed affirmation ids'] || []
                     }));
 
                     console.log("updated user context");
