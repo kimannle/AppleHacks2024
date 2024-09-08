@@ -247,17 +247,17 @@ def register():
     except ValueError as e:
         return "{}".format(e)
 
-@app.route("/update_user", method=['GET'])
-def update():
-    userid = request.args.get('id')
-    try:
-        user = AUTH.db.findusr(userid)
-        return jsonify({"User id": user.id,
-                        "Username": user.username,
-                        "Completed activity ids": user.completed_activity_ids,
-                        "Completed affirmation ids": user.completed_affirmation_ids})
-    except:
-        return abort(403)
+# @app.route("/update_user", methods=['GET'])
+# def update():
+#     userid = request.args.get('id')
+#     try:
+#         user = AUTH.db.findusr(userid)
+#         return jsonify({"User id": user.id,
+#                         "Username": user.username,
+#                         "Completed activity ids": user.completed_activity_ids,
+#                         "Completed affirmation ids": user.completed_affirmation_ids})
+#     except:
+#         return abort(403)
 
 @app.route("/login", methods=['GET'])
 def login():
