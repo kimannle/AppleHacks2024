@@ -229,16 +229,16 @@ init_affirmations()
 def root():
     return "WELCOME TO FLASK"
 
-@app.route("/register", methods=['GET'])
+@app.route("/register", methods=['POST'])
 def register():
     """
     EXAMPLE USAGE: 
     http://localhost:5000/register
     
     """
-    username = request.args.get('username')
-    pwd = request.args.get('password').encode('utf-8')
-    email = request.args.get('email')
+    username = request.form.get('username')
+    pwd = request.form.get('password').encode('utf-8')
+    email = request.form.get('email')
     try:
         user = AUTH.register_user(username=username, password=pwd, email=email)
         if user is None:
@@ -266,7 +266,7 @@ def random_activity():
     try:
         daily_activity = AUTH.get_random_activity()
         if daily_activity:
-            return jsonify({"activitiy": daily_activity.activity, "id": daily_activity.id}), 200
+            return jsonify({"activity": daily_activity.activity, "id": daily_activity.id}), 200
         else:
             return jsonify({"error": "No activities found"}), 404
     except Exception as e:
@@ -299,7 +299,7 @@ def complete_activity():
         return abort(403)
 
 
-@app.route("/complete_affirmation", methods=['GET', 'POST'])
+@app.route("/complete_affirmation", methods=['GET'])
 def complete_affirmation():
     affirmation_id = int(request.args.get('id'))
     user_id = int(request.args.get('uid'))

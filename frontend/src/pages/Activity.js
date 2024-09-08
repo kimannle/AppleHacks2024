@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../styles/AcAv.css';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../UserContext';
 
 function Activity() {
+    const { user, setUser } = useContext(UserContext);
     const [activity, setActivity] = useState("");
+    const [activityId, setActivityId] = useState("");
 
     useEffect(() => {
         fetch("/daily-activity", {
@@ -12,18 +15,41 @@ function Activity() {
             res => res.json()
         ).then(
             data => {
-                console.log(data);
-                setActivity(data);
+                setActivity(data.activity);
+                setActivityId(data.id);
             }
         ).catch(
             error => console.error('Error:', error)
         );
-    }, [``]);
+    }, [user]);
 
     const navigate = useNavigate();
 
     const handleButtonClick= () => {
-        navigate('/completed');
+        fetch(`/complete_activity?id=${activityId}&uid=${user.ID}`, {
+            method: 'GET'
+
+        }).then(
+            res => res.json()
+        ).then(
+            data => {
+                console.log(data);
+                if (data.completion_status !== false) {
+                    setUser(prevUser => ({
+                        ...prevUser,
+                        completedAffirmationIds: data['Completed activity ids']
+                    }));
+
+                    console.log("updated user context");
+                    console.log(user);
+                    navigate('/completed');
+                } else {
+                    console.error('Failed to complete activity');
+                }
+            }
+        ).catch(
+            error => console.error('Error:', error)
+        );
     };
 
     return (
