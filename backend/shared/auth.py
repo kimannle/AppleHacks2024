@@ -9,15 +9,15 @@ class AUTH:
     def __init__(self) -> None:
         self.db = DB()
 
-    def add_activity_to_db(self, activity_description: str, status: bool=False) -> Activity | None:
-        return self.db.add_activity(activity=activity_description, status=status)
+    def add_activity_to_db(self, activity_description: str) -> Activity | None:
+        return self.db.add_activity(activity=activity_description)
 
     def init_activities(self, activities: list[str]) -> None:
         for activity in activities:
             self.add_activity_to_db(activity)
 
-    def add_affirmation_to_db(self, affirmation_description: str, status: bool=False) -> Affirmation | None:
-        return self.db.add_affirmation(affirmation=affirmation_description, status=status)
+    def add_affirmation_to_db(self, affirmation_description: str) -> Affirmation | None:
+        return self.db.add_affirmation(affirmation=affirmation_description)
 
     def init_affirmations(self, affirmations: list[str]) -> None:
         for affirmation in affirmations:
