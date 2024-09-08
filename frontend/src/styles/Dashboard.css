@@ -1,8 +1,8 @@
 /* Full-page container for the dashboard */
 .dashboard-container {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   height: 100vh;
   position: relative;
@@ -11,17 +11,15 @@
 
 /* Username and email info in the top-left corner */
 .user-info {
-  position: absolute;
-  top: 20px;
-  left: 20px;
+  position: relative;
+  top: 25vh;
   text-align: left;
   color: #f5f5f5;
 }
 
 .dashboard-container h1 {
-  position: absolute;
-  top: 10vh;
-  left: 90vh;
+  position: relative;
+  top: 15vh;
 }
 
 .user-info p {
@@ -78,7 +76,7 @@
 }
 
 .circle-special {
-  background: linear-gradient(180deg, #000000 0%, #1e0622 50%, #591064 75%, #ca7ed6 100%);
+  background: linear-gradient(180deg, #000000 0%, #18051b 50%, #51045d 75%, #af89b5 100%);
   box-shadow: 0 0 30px 10px rgba(65, 11, 102, 0.8);
 }
 
