@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/RegLog.css';
+import '../styles/AcAv.css';
 
 function Affirmation() {
     return (
