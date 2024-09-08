@@ -3,6 +3,7 @@ import bcrypt
 from models.activity import Activity
 from models.affirmation import Affirmation
 import random
+import json
 
 class AUTH:
     
@@ -58,11 +59,40 @@ class AUTH:
             return None
         return random.choice(affirmations)
     
-    def complete_activity(self, id:int, uid:int) -> bool:
+    def complete_activity(self, act_id: int, uid: int) -> bool:
         try:
-            activity = self.db.find_activity(id)
-            user =  self.db.findusr(id)
+            activity = self.db.find_activity(act_id)
+            user = self.db.findusr(uid)
+            
             if isinstance(user, User) and isinstance(activity, Activity):
+                if user.completed_activity_ids is None:
+                    completed_activity_ids = []
+                else:
+                    completed_activity_ids = json.loads(user.completed_activity_ids)
                 
-        except:
+                completed_activity_ids.append(act_id)
+                user.completed_activity_ids = json.dumps(completed_activity_ids)
+                self.db._session.commit()
+            return user
+        except Exception as e:
+            print("Error Here: {}".format(e))
+            return False
+
+    def complete_affirmation(self, aff_id: int, uid: int) -> bool:
+        try:
+            affirmation = self.db.find_affirmation(aff_id)
+            user = self.db.findusr(uid)
+            
+            if isinstance(user, User) and isinstance(affirmation, Affirmation):
+                if user.completed_affirmation_ids is None:
+                    completed_affirmation_ids = []
+                else:
+                    completed_affirmation_ids = json.loads(user.completed_affirmation_ids)
+                
+                completed_affirmation_ids.append(aff_id)
+                user.completed_affirmation_ids = json.dumps(completed_affirmation_ids)
+                self.db._session.commit()
+            return user
+        except Exception as e:
+            print("Error Here: {}".format(e))
             return False

@@ -229,16 +229,16 @@ init_affirmations()
 def root():
     return "WELCOME TO FLASK"
 
-@app.route("/register", methods=['POST'])
+@app.route("/register", methods=['GET'])
 def register():
     """
     EXAMPLE USAGE: 
     http://localhost:5000/register
     
     """
-    username = request.form.get('username')
-    pwd = request.form.get('password').encode('utf-8')
-    email = request.form.get('email')
+    username = request.args.get('username')
+    pwd = request.args.get('password').encode('utf-8')
+    email = request.args.get('email')
     try:
         user = AUTH.register_user(username=username, password=pwd, email=email)
         if user is None:
@@ -287,15 +287,30 @@ def random_affirmation():
 
 @app.route("/complete_activity", methods=['GET', 'POST'])
 def complete_activity():
-    activity_id = request.args.get('id')
-    user_id = request.args.get('uid')
+    activity_id = int(request.args.get('id'))
+    user_id = int(request.args.get('uid'))
     try:
-        complete = AUTH.complete_activity(activity_id, user_id)
-        if complete:
-            return jsonify({"completion_status" : complete})
+        user = AUTH.complete_activity(activity_id, user_id)
+        if user:
+            return jsonify({"User id": user.id, "Username": user.username, "Completed activity ids": user.completed_activity_ids})
         return jsonify({"completion_status" : False})
-    except:
-        return abort(500)
+    except Exception as e: 
+        print("Error Here: {}".format(e))
+        return abort(403)
+
+
+@app.route("/complete_affirmation", methods=['GET', 'POST'])
+def complete_affirmation():
+    affirmation_id = int(request.args.get('id'))
+    user_id = int(request.args.get('uid'))
+    try:
+        user = AUTH.complete_affirmation(affirmation_id, user_id)
+        if user:
+            return jsonify({"User id": user.id, "Username": user.username, "Completed affirmation ids": user.completed_affirmation_ids})
+        return jsonify({"completion_status" : False})
+    except Exception as e: 
+        print("Error Here: {}".format(e))
+        return abort(403)
 
 if __name__ == "__main__":
     app.run(debug=True)
