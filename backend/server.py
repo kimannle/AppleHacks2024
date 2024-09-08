@@ -253,13 +253,13 @@ def login():
     pwd = request.args.get('password')
 
     try:
-        user = AUTH.login(username = username, password = pwd)
+        user = AUTH.login(username=username, password=pwd)
         if user is None:
-            return "Error logging in user"
+            return jsonify({"error": "Error logging in user"}), 400
         return jsonify({"ID": user.id, "email": user.email, "username": user.username})
 
     except ValueError as e:
-        return "{}".format(e)
+        return jsonify({"error": str(e)}), 400
 
 @app.route("/daily-activity", methods=['GET'])
 def random_activity():
