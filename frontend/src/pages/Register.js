@@ -1,10 +1,7 @@
-// Register the 
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/RegLog.css';
 import { useNavigate } from 'react-router-dom';
-
 
 function Register() {
     const navigate = useNavigate();
@@ -12,10 +9,21 @@ function Register() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Register form subits and requests
+        const formData = new FormData(e.target);
 
-        navigate('/dashboard');
-
+        fetch("/register", {
+            method: 'POST',
+            body: formData
+        }).then(
+            res => res.json()
+        ).then(
+            data => {
+                console.log(data);
+                navigate('/dashboard');
+            }
+        ).catch(
+            error => console.error('Error:', error)
+        );
     }
 
     return (
@@ -24,7 +32,7 @@ function Register() {
             <form onSubmit={handleSubmit}>
 
                 <label htmlFor="username"> Username </label>
-                <input type="username" id="username" name="username" required />
+                <input type="text" id="username" name="username" required />
 
                 <label htmlFor="email"> Email Address </label>
                 <input type="email" id="email" name="email" required />

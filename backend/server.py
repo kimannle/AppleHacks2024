@@ -229,16 +229,16 @@ init_affirmations()
 def root():
     return "WELCOME TO FLASK"
 
-@app.route("/register", methods=['GET'])
+@app.route("/register", methods=['POST'])
 def register():
     """
     EXAMPLE USAGE: 
-    http://localhost:5000/register?username=kim&password=123456&email=lolly
+    http://localhost:5000/register
     
     """
-    username = request.args.get('username')
-    pwd = request.args.get('password').encode('utf-8')
-    email = request.args.get('email')
+    username = request.form.get('username')
+    pwd = request.form.get('password').encode('utf-8')
+    email = request.form.get('email')
     try:
         user = AUTH.register_user(username=username, password=pwd, email=email)
         if user is None:
