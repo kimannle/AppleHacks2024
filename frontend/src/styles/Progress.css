@@ -1,0 +1,20 @@
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    text-align: center;
+  }
+
+.progress-container h1 {
+    position: relative;
+    top: 15vh;
+}
+
+.progress-container p {
+    position: relative;
+    top: 20vh;
+    font-size: 1.5rem;
+}

@@ -6,6 +6,8 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Affirmation from './pages/Affirmation';
 import Activity from './pages/Activity';
+import Completed from './pages/Completed';
+import Progress from './pages/Progress';
 import './App.css';
 import './styles/StarryNight.css';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
@@ -28,6 +30,8 @@ function AnimatedRoutes() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/affirmation" element={<Affirmation />} />
           <Route path="/activity" element={<Activity />} />
+          <Route path="/completed" element={<Completed />} />
+          <Route path="/progress" element={<Progress />} />
         </Routes>
       </CSSTransition>
     </SwitchTransition>

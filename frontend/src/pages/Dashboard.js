@@ -19,9 +19,9 @@ function Dashboard() {
 
             <div className={`circle-container ${showFirstSet ? 'fade-in' : 'fade-out'}`}>
                 <div className="circle">
-                    <div className="circle-div">
+                    <Link to="/progress" className="circle">
                         <span>See Progress</span>
-                    </div>
+                    </Link>
                 </div>
                 <div className="circle circle-special" onClick={handleDailyTasksClick}>
                     <div className="circle-div">
