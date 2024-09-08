@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/RegLog.css';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../UserContext';
 
 function Register() {
     const navigate = useNavigate();
+    const { setUser } = useContext(UserContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,6 +21,7 @@ function Register() {
         ).then(
             data => {
                 console.log(data);
+                setUser(data);
                 navigate('/dashboard');
             }
         ).catch(

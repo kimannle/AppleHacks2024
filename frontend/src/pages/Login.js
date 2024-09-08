@@ -1,10 +1,11 @@
-import React from 'react';
-import '../styles/RegLog.css';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/RegLog.css';
+import { UserContext } from '../UserContext';
 
 function Login() {
     const navigate = useNavigate();
+    const { setUser } = useContext(UserContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,6 +24,7 @@ function Login() {
                     alert(`Login failed: ${data.error}`);
                 } else {
                     console.log(data);
+                    setUser(data);
                     navigate('/dashboard');
                 }
             }

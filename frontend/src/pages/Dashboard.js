@@ -1,43 +1,41 @@
-import React, { useState } from 'react';
-import '../styles/Dashboard.css';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/Dashboard.css';
+import { UserContext } from '../UserContext';
 
 function Dashboard() {
-  const [showFirstSet, setShowFirstSet] = useState(true); // Track which set to show
+    const { user } = useContext(UserContext);
+    const [showFirstSet, setShowFirstSet] = useState(true);
 
-  const handleDailyTasksClick = () => {
-    // Fade out the first set, then fade in the second set
-    setShowFirstSet(false);
-  };
+    const handleDailyTasksClick = () => {
+        setShowFirstSet(false);
+    };
 
-  return (
-    <div className="dashboard-container">
-      {/* Display username */}
-      <div className="user-info">
-        <p>Hello, John Doe!</p>
-      </div>
+    return (
+        <div className="dashboard-container">
+            <div className="user-info">
+                <p>Hello, {user ? user.username : 'Guest'}!</p>
+            </div>
 
-      {/* First set of circles */}
-      <div className={`circle-container ${showFirstSet ? 'fade-in' : 'fade-out'}`}>
-        <div className="circle">
-          <span>See Progress</span>
+            <div className={`circle-container ${showFirstSet ? 'fade-in' : 'fade-out'}`}>
+                <div className="circle">
+                    <span>See Progress</span>
+                </div>
+                <div className="circle circle-special" onClick={handleDailyTasksClick}>
+                    <span>Daily Tasks</span>
+                </div>
+            </div>
+
+            <div className={`circle-container ${!showFirstSet ? 'fade-in' : 'fade-out'}`}>
+                <Link to="/affirmation" className="circle">
+                    <span>Affirmation</span>
+                </Link>
+                <Link to="/activity" className="circle circle-special">
+                    <span>Activity</span>
+                </Link>
+            </div>
         </div>
-        <div className="circle circle-special" onClick={handleDailyTasksClick}>
-          <span>Daily Tasks</span>
-        </div>
-      </div>
-
-      {/* Second set of circles */}
-      <div className={`circle-container ${!showFirstSet ? 'fade-in' : 'fade-out'}`}>
-        <Link to="/affirmation" className="circle">
-          <span>Affirmation</span>
-        </Link>
-        <Link to="/activity" className="circle circle-special">
-          <span>Activity</span>
-        </Link>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default Dashboard;
