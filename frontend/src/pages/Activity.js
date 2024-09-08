@@ -25,19 +25,18 @@ function Activity() {
 
     const navigate = useNavigate();
 
-    const handleButtonClick= () => {
+    const handleButtonClick = () => {
         fetch(`/complete_activity?id=${activityId}&uid=${user.ID}`, {
             method: 'GET'
-
         }).then(
             res => res.json()
         ).then(
             data => {
-                console.log(data);
                 if (data.completion_status !== false) {
                     setUser(prevUser => ({
                         ...prevUser,
-                        completedAffirmationIds: data['Completed activity ids']
+                        completedActivityIds: data['Completed activity ids'],
+                        completedAffirmationIds: prevUser.completedAffirmationIds || []
                     }));
 
                     console.log("updated user context");
@@ -54,9 +53,8 @@ function Activity() {
 
     return (
         <div className="ac-av">
-            <h2>The universe has spoken forth today's fated task!</h2>
             <p>{activity}</p>
-            <button onClick={handleButtonClick}>I did it!</button>
+            <button onClick={handleButtonClick}>Complete Activity</button>
         </div>
     );
 }

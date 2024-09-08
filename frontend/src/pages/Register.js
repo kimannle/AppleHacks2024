@@ -22,6 +22,11 @@ function Register() {
             data => {
                 console.log(data);
                 setUser(data);
+                // setUser({
+                //     ...data,
+                //     completedActivityIds: '[]',
+                //     completedAffirmationIds: '[]'
+                // });
                 navigate('/dashboard');
             }
         ).catch(

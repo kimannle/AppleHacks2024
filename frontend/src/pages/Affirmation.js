@@ -35,7 +35,8 @@ function Affirmation() {
                 if (data.completion_status !== false) {
                     setUser(prevUser => ({
                         ...prevUser,
-                        completedAffirmationIds: data['Completed affirmation ids']
+                        completedAffirmationIds: data['Completed affirmation ids'],
+                        completedActivityIds: prevUser.completedActivityIds || []
                     }));
 
                     console.log("updated user context");
@@ -52,9 +53,8 @@ function Affirmation() {
 
     return (
         <div className="ac-av">
-            <h2>The universe has a reminder for you!</h2>
             <p>{affirmation}</p>
-            <button onClick={handleButtonClick}>I did it!</button>
+            <button onClick={handleButtonClick}>Complete Affirmation</button>
         </div>
     );
 }

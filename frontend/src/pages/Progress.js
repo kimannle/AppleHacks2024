@@ -9,7 +9,7 @@ function Progress() {
                 <p>You're lighting up the cosmos!</p>
             </div>
             <div>
-                <p>So far, you have completed # affirmation and # activites!</p>
+                <p>So far, you have completed # affirmation and # activities!</p>
             </div>
         </div>
     );
